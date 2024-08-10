@@ -698,8 +698,10 @@ div.yours {
   & .heart {
     position: absolute;
     top: 155px;
-    left: 160px;
+    left: 155px;
     font-size: var(--size);
+
+    animation: heart 1s alternate infinite ease-in-out;
   }
 }
 
@@ -730,4 +732,9 @@ a:hover {
 a:hover:active {
   border-style: inset;
   background-color: var(--active);
+}
+
+@keyframes heart {
+  from { opacity: 1 }
+  to { opacity: 0.75 }
 }
