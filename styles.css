@@ -289,6 +289,8 @@ label:nth-child(16) span::after{
 /*               — Clues —               */
 /*        Mary Rose launched 1511        */
 /*  Peterhouse (Cambridge) founded 1284  */
+/*        Secretary problem = 37%        */
+/*  Monosodium glutamate E number = 621  */
 /*                                       */
 /*****************************************/
 
@@ -296,15 +298,35 @@ label:nth-child(15):has( + label :checked),
 label:nth-child(11):has( + label + label + label + label :checked),
 label:nth-child(11):has(:checked) + label,
 label:nth-child(8):has( + label + label + label + label :checked),
-label:nth-child(4):has( + label + label + label + label :checked) {
+label:nth-child(4):has( + label + label + label + label :checked),
+label:nth-child(3):has( + label :checked),
+label:nth-child(3):has(:checked)  + label + label + label + label,
+label:nth-child(6):has( + label :checked),
+label:nth-child(2):has( + label + label + label + label :checked),
+label:nth-child(1):has( + label :checked),
+label:nth-child(1):has(:checked) + label + label + label + label,
+label:nth-child(5):has(:checked) + label + label + label + label,
+label:nth-child(9):has(:checked) + label + label + label + label,
+label:nth-child(13):has(:checked) + label,
+label:nth-child(10):has( + label + label + label + label :checked) {
   color: #9f9;
 }
 
-label:nth-child(4):has(:checked) + label + label + label + label,
+label:nth-child(15):has(:checked) + label,
+label:nth-child(11):has(:checked) + label + label + label + label,
+label:nth-child(11):has( + label :checked),
 label:nth-child(8):has(:checked) + label + label + label + label,
-label:nth-child(11):has( + label :checked),label:nth-child(11):has(:checked) + label + label + label + label,
-label:nth-child(15):has(:checked) + label
- {
+label:nth-child(4):has(:checked) + label + label + label + label,
+label:nth-child(3):has(:checked) + label,
+label:nth-child(3):has( + label + label + label + label :checked),
+label:nth-child(6):has(:checked) + label,
+label:nth-child(2):has(:checked) + label + label + label + label,
+label:nth-child(1):has(:checked) + label,
+label:nth-child(1):has( + label + label + label + label :checked),
+label:nth-child(5):has( + label + label + label + label :checked),
+label:nth-child(9):has( + label + label + label + label :checked),
+label:nth-child(13):has( + label :checked),
+label:nth-child(10):has( :checked) + label + label + label + label {
   color: #ffc;
 }
 
@@ -379,6 +401,236 @@ html:has(label:nth-child(4) :checked) {
   --seed4: 
     13 * 4096
   + 14 * 256
+  + 11 * 16
+  + 15;
+}
+
+html:has(label:nth-child(3) :checked) {
+  --seed1: 
+    1 * 4096
+  + 2 * 256
+  + 0 * 16
+  + 3;
+  --seed2: 
+    5 * 4096
+  + 6 * 256
+  + 7 * 16
+  + 4;
+  --seed3: 
+    9 * 4096
+  + 10 * 256
+  + 12 * 16
+  + 8;
+  --seed4: 
+    13 * 4096
+  + 14 * 256
+  + 11 * 16
+  + 15;
+}
+
+
+html:has(label:nth-child(7) :checked) {
+  --seed1: 
+    1 * 4096
+  + 2 * 256
+  + 7 * 16
+  + 3;
+  --seed2: 
+    5 * 4096
+  + 6 * 256
+  + 0 * 16
+  + 4;
+  --seed3: 
+    9 * 4096
+  + 10 * 256
+  + 12 * 16
+  + 8;
+  --seed4: 
+    13 * 4096
+  + 14 * 256
+  + 11 * 16
+  + 15;
+}
+
+html:has(label:nth-child(6) :checked) {
+  --seed1: 
+    1 * 4096
+  + 2 * 256
+  + 7 * 16
+  + 3;
+  --seed2: 
+    5 * 4096
+  + 0 * 256
+  + 6 * 16
+  + 4;
+  --seed3: 
+    9 * 4096
+  + 10 * 256
+  + 12 * 16
+  + 8;
+  --seed4: 
+    13 * 4096
+  + 14 * 256
+  + 11 * 16
+  + 15;
+}
+
+html:has(label:nth-child(2) :checked) {
+  --seed1: 
+    1 * 4096
+  + 0 * 256
+  + 7 * 16
+  + 3;
+  --seed2: 
+    5 * 4096
+  + 2 * 256
+  + 6 * 16
+  + 4;
+  --seed3: 
+    9 * 4096
+  + 10 * 256
+  + 12 * 16
+  + 8;
+  --seed4: 
+    13 * 4096
+  + 14 * 256
+  + 11 * 16
+  + 15;
+}
+
+html:has(label:nth-child(1) :checked) {
+  --seed1: 
+    0 * 4096
+  + 1 * 256
+  + 7 * 16
+  + 3;
+  --seed2: 
+    5 * 4096
+  + 2 * 256
+  + 6 * 16
+  + 4;
+  --seed3: 
+    9 * 4096
+  + 10 * 256
+  + 12 * 16
+  + 8;
+  --seed4: 
+    13 * 4096
+  + 14 * 256
+  + 11 * 16
+  + 15;
+}
+
+html:has(label:nth-child(5) :checked) {
+  --seed1: 
+    5 * 4096
+  + 1 * 256
+  + 7 * 16
+  + 3;
+  --seed2: 
+    0 * 4096
+  + 2 * 256
+  + 6 * 16
+  + 4;
+  --seed3: 
+    9 * 4096
+  + 10 * 256
+  + 12 * 16
+  + 8;
+  --seed4: 
+    13 * 4096
+  + 14 * 256
+  + 11 * 16
+  + 15;
+}
+
+html:has(label:nth-child(9) :checked) {
+  --seed1: 
+    5 * 4096
+  + 1 * 256
+  + 7 * 16
+  + 3;
+  --seed2: 
+    9 * 4096
+  + 2 * 256
+  + 6 * 16
+  + 4;
+  --seed3: 
+    0 * 4096
+  + 10 * 256
+  + 12 * 16
+  + 8;
+  --seed4: 
+    13 * 4096
+  + 14 * 256
+  + 11 * 16
+  + 15;
+}
+
+html:has(label:nth-child(13) :checked) {
+  --seed1: 
+    5 * 4096
+  + 1 * 256
+  + 7 * 16
+  + 3;
+  --seed2: 
+    9 * 4096
+  + 2 * 256
+  + 6 * 16
+  + 4;
+  --seed3: 
+    13 * 4096
+  + 10 * 256
+  + 12 * 16
+  + 8;
+  --seed4: 
+     0 * 4096
+  + 14 * 256
+  + 11 * 16
+  + 15;
+}
+
+html:has(label:nth-child(14) :checked) {
+  --seed1: 
+    5 * 4096
+  + 1 * 256
+  + 7 * 16
+  + 3;
+  --seed2: 
+    9 * 4096
+  + 2 * 256
+  + 6 * 16
+  + 4;
+  --seed3: 
+    13 * 4096
+  + 10 * 256
+  + 12 * 16
+  + 8;
+  --seed4: 
+    14 * 4096
+  + 0 * 256
+  + 11 * 16
+  + 15;
+}
+html:has(label:nth-child(10) :checked) {
+  --seed1: 
+    5 * 4096
+  + 1 * 256
+  + 7 * 16
+  + 3;
+  --seed2: 
+    9 * 4096
+  + 2 * 256
+  + 6 * 16
+  + 4;
+  --seed3: 
+    13 * 4096
+  +  0 * 256
+  + 12 * 16
+  + 8;
+  --seed4: 
+    14 * 4096
+  + 10 * 256
   + 11 * 16
   + 15;
 }
