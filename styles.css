@@ -1,23 +1,10 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
 
-  color-scheme: light dark;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  
   --light: #ddd;
   --mid: #888;
   --dark: #222;
-  --gap: 0.5em;
-
-  --primary: #060;
-  --primary-border: #393;
-  --primary-active: #030;
+  --gap: 1px;
 
   color: var(--light);
   background-color: var(--dark);
@@ -31,66 +18,6 @@ body {
   justify-content: center;
   align-items: center;
 }
-
-
-/* BUTTONS / BUTTONS / BUTTONS / BUTTONS / BUTTONS / BUTTONS */
-
-div.buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
-div.buttons button {
-  flex: 1
-}
-
-div.buttons .primary {
-  margin-left: 0.5em;
-  flex: 2
-}
-
-
-button,
-.button {
-  border: 1px outset var(--mid);
-  border-radius: var(--gap);
-  padding: var(--gap);
-}
-
-button:not(:disabled),
-.button:not(:disabled) {
-  cursor: pointer;
-}
-
-button:hover,
-.button:hover {
-  color: #fff;
-}
-
-button:hover:active,
-.button:hover:active {
-  border-style: inset;
-  background-color: #000;
-}
-
-button.pressed,
-.button.pressed {
-  color: #fff;
-  border-style: inset;
-  background-color: #000;
-}
-
-button.primary,
-.button.primary {
-  background-color: var(--primary);
-  border-color: var(--primary-border);
-}
-
-button.primary:active:hover,
-.button.primary:active:hover {
-  background-color: var(--primary-active);
-}
-
 
 main {
   position: relative;
@@ -118,13 +45,14 @@ label {
   border: 5px outset #000;
   pointer-events: none;
 }
-label:has(span:empty) {
+label:has(:checked) {
   border: none;
   background-color: var(--mid);
 }
 
 input {
   position: absolute;
+  left: -999vw;
 }
 
 label:nth-child(4n + 1) {
@@ -147,12 +75,11 @@ label:has(+ label + label + label + label :checked),
 label:has(+ label:not(.wrap) :checked),
 label:has(:checked) + label:not(.wrap),
 label:has(:checked) + label + label + label + label {
-  background-color: green;
+  background-color: #050;
   pointer-events: all
 }
 
 span {
   width:100%;
   height:100%;
-
 }
