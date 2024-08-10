@@ -17,11 +17,26 @@
   color: var(--light);
   background-color: var(--dark);
 
-  --seed:
+  --seed1:
     1 * 4096
   + 2 * 256
   + 3 * 16
   + 4;
+  --seed2:
+    5 * 4096
+  + 6 * 256
+  + 7 * 16
+  + 8;
+  --seed3:
+    9 * 4096
+  + 10 * 256
+  + 11 * 16
+  + 12;
+  --seed4:
+    13 * 4096
+  + 14 * 256
+  + 15 * 16
+  + 15;
 }
 
 body {
@@ -65,6 +80,9 @@ label:has(:checked) {
   border-color: transparent;
   background-color: var(--mid);
 }
+label:has(:checked) span::after {
+  display: none;
+}
 
 input {
   position: absolute;
@@ -102,8 +120,8 @@ span {
 
 label:nth-child(1) span::after{
   counter-set: one calc(
-    ( var(--seed)
-    - mod(var(--seed), 4096)
+    ( var(--seed1)
+    - mod(var(--seed1), 4096)
     ) / 4096
   );
   content: counter(one);
@@ -111,21 +129,111 @@ label:nth-child(1) span::after{
 
 label:nth-child(2) span::after{
   counter-set: two calc(
-    ( mod(var(--seed), 4096)
-   - mod(mod(var(--seed), 4096), 256)
+    ( mod(var(--seed1), 4096)
+    - mod(mod(var(--seed1), 4096), 256)
   ) / 256);
   content: counter(two);
 }
 
 label:nth-child(3) span::after{
   counter-set: three calc(
-    ( mod(var(--seed), 256)
-   - mod(mod(var(--seed), 256), 16)
-  ) / 16);
+    ( mod(var(--seed1), 256)
+    - mod(mod(var(--seed1), 256), 16)
+    ) / 16);
   content: counter(three);
 }
 
 label:nth-child(4) span::after{
-  counter-set: four mod(var(--seed), 16);
-  content: counter(four);
+  counter-set: number mod(var(--seed1), 16);
+  content: counter(number);
+}
+
+label:nth-child(5) span::after{
+  counter-set: number calc(
+    ( var(--seed2)
+    - mod(var(--seed2), 4096)
+    ) / 4096
+  );
+  content: counter(number);
+}
+
+label:nth-child(6) span::after{
+  counter-set: number calc(
+    ( mod(var(--seed2), 4096)
+    - mod(mod(var(--seed2), 4096), 256)
+    ) / 256);
+  content: counter(number);
+}
+
+label:nth-child(7) span::after{
+  counter-set: number calc(
+    ( mod(var(--seed2), 256)
+    - mod(mod(var(--seed2), 256), 16)
+    ) / 16);
+  content: counter(number);
+}
+
+label:nth-child(8) span::after{
+  counter-set: number mod(var(--seed2), 16);
+  content: counter(number);
+}
+
+label:nth-child(9) span::after{
+  counter-set: number calc(
+    ( var(--seed3)
+    - mod(var(--seed3), 4096)
+    ) / 4096
+  );
+  content: counter(number);
+}
+
+label:nth-child(10) span::after{
+  counter-set: number calc(
+    ( mod(var(--seed3), 4096)
+    - mod(mod(var(--seed3), 4096), 256)
+    ) / 256);
+  content: counter(number);
+}
+
+label:nth-child(11) span::after{
+  counter-set: number calc(
+    ( mod(var(--seed3), 256)
+    - mod(mod(var(--seed3), 256), 16)
+    ) / 16);
+  content: counter(number);
+}
+
+label:nth-child(12) span::after{
+  counter-set: number mod(var(--seed3), 16);
+  content: counter(number);
+}
+
+label:nth-child(13) span::after{
+  counter-set: number calc(
+    ( var(--seed4)
+    - mod(var(--seed4), 4096)
+    ) / 4096
+  );
+  content: counter(number);
+}
+
+label:nth-child(14) span::after{
+  counter-set: number calc(
+    ( mod(var(--seed4), 4096)
+    - mod(mod(var(--seed4), 4096), 256)
+    ) / 256);
+  content: counter(number);
+}
+
+label:nth-child(15) span::after{
+  counter-set: number calc(
+    ( mod(var(--seed4), 256)
+    - mod(mod(var(--seed4), 256), 16)
+    ) / 16);
+  content: counter(number);
+}
+
+label:nth-child(16) span::after{
+  counter-set: number mod(var(--seed4), 16);
+  content: counter(number);
 }
