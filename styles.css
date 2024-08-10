@@ -1,19 +1,8 @@
 @counter-style yours {
   system: cyclic;
-  symbols: "А" "л" "е" "к" "с" "а" "н" "д" "р" "а" "о" "я" "т" "в" "й" "-";
+  symbols: "А" "л" "е" "к" "с" "а" "н" "д" "р" "а" "о" "я" "т" "в" "о" "й";
   suffix: ""
 }
-
-@counter-style todayф {
-  system: cyclic;
-  symbols:
-    "в" "е" "й" "ь"
-    "Т" "н" "о" "г"
-    "д" "с" "н" "е"
-    "о" "д" "я" "-";
-  suffix: ""
-}
-
 
 @counter-style today {
   system: cyclic;
@@ -32,8 +21,9 @@
   --light: #ddd;
   --mid: #888;
   --dark: #222;
-  --can: #020;
-  --next: #040;
+  --can:  #040;
+  --dont: #333;
+  --next: #020;
 
   --round: 8px;
   --main: 300px;
@@ -142,8 +132,8 @@ label:has(+ label + label + label + label :checked),
 label:has(+ label:not(.wrap) :checked),
 label:has(:checked) + label:not(.wrap),
 label:has(:checked) + label + label + label + label {
-  background-color: var(--can);
-  pointer-events: all
+  background-color: var(--dont);
+  /* pointer-events: all */
 }
 
 /* Arrows to show direction of possible movement */
@@ -310,16 +300,7 @@ label:nth-child(16) span::after{
 /*     GIVES THE ILLUSION OF WORKING     */
 /*                                       */
 /*****************************************/
-/* 
-below
-label:nth-child(11):has(:checked) + label + label + label + label
-above 
-label:nth-child(12):has(+ label + label + label + label :checked)
-right
-label:nth-child(15):has(:checked) + label
-left
-label:nth-child(7):has(+ label :checked)
-*/
+
 label:nth-child(11):has(:checked) + label + label + label + label,
 label:nth-child(15):has(:checked) + label,
 label:nth-child(12):has(+ label + label + label + label :checked),
@@ -333,29 +314,38 @@ label:nth-child(5):has(:checked) + label,
 label:nth-child(6):has(:checked) + label + label + label + label,
 label:nth-child(10):has(:checked) + label + label + label + label,
 label:nth-child(13):has(+ label :checked),
-label:nth-child(9):has(+ label + label + label + label :checked)
-
-{
+label:nth-child(9):has(+ label + label + label + label :checked){
   background-color: var(--next);
+  pointer-events: all;;
 }
-
-/* label:nth-child(15):has(:checked) + label,
-label:nth-child(11):has(:checked) + label + label + label + label,
-label:nth-child(11):has( + label :checked),
-label:nth-child(8):has(:checked) + label + label + label + label,
-label:nth-child(4):has(:checked) + label + label + label + label,
-label:nth-child(3):has(:checked) + label,
-label:nth-child(3):has( + label + label + label + label :checked),
-label:nth-child(6):has(:checked) + label,
-label:nth-child(2):has(:checked) + label + label + label + label,
+/* 
+below
+label:nth-child(11):has(:checked) + label + label + label + label
+above 
+label:nth-child(12):has(+ label + label + label + label :checked)
+right
+label:nth-child(15):has(:checked) + label
+left
+label:nth-child(7):has(+ label :checked)
+*/
+label:nth-child(9):has(:checked) + label + label + label + label,
+label:nth-child(13):has(:checked) + label,
+label:nth-child(10):has(+ label + label + label + label :checked),
+label:nth-child(6):has(+ label + label + label + label :checked),
+label:nth-child(5):has(+ label :checked),
+label:nth-child(1):has(+ label + label + label + label :checked),
 label:nth-child(1):has(:checked) + label,
-label:nth-child(1):has( + label + label + label + label :checked),
-label:nth-child(5):has( + label + label + label + label :checked),
-label:nth-child(9):has( + label + label + label + label :checked),
-label:nth-child(13):has( + label :checked),
-label:nth-child(10):has( :checked) + label + label + label + label {
-  color: #ffc;
-} */
+label:nth-child(2):has(:checked) + label,
+label:nth-child(3):has(:checked) + label + label + label + label,
+label:nth-child(7):has(:checked) + label,
+label:nth-child(8):has(:checked) + label + label + label + label,
+label:nth-child(12):has(:checked) + label + label + label + label,
+label:nth-child(15):has(+ label :checked),
+label:nth-child(11):has(+ label + label + label + label :checked)
+{
+  background-color: var(--can);
+  pointer-events: all;;
+}
 
 html:has(label:nth-child(15) :checked) {
   --seed3: 
