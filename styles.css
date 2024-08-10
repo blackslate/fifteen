@@ -13,6 +13,7 @@
   --edge:  5px;
   --tile: 64px; /* + 2 * var(-edge) = 73 */
   --gap:   1px;
+  --tiny: 32px;
 
   color: var(--light);
   background-color: var(--dark);
@@ -80,6 +81,11 @@ label:has(:checked) {
   border-color: transparent;
   background-color: var(--mid);
 }
+label span::after {
+  position: relative;
+  top: var(--round);
+  /* background-color: #f009; */
+}
 label:has(:checked) span::after {
   display: none;
 }
@@ -112,6 +118,43 @@ label:has(:checked) + label + label + label + label {
   background-color: #050;
   pointer-events: all
 }
+
+label::before {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  font-size: var(--tiny);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  /* background-color: #f006; */
+}
+
+
+label:has(+ label + label + label + label :checked)::before {
+  content: "v";
+  bottom: -22px;;
+}
+
+label:has(+ label:not(.wrap) :checked)::before {
+  content: ">";
+  bottom: 4px;
+  left: 8px;
+  text-align: right;
+}
+
+label:has(:checked) + label:not(.wrap)::before {
+  content: "<";
+  bottom: 4px;
+  left: -8px;
+  text-align: left;
+}
+
+label:has(:checked) + label + label + label + label::before {
+  content: "^";
+  top: -18px;
+}
+
 
 span {
   width:100%;
