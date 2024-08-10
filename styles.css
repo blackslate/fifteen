@@ -17,16 +17,19 @@
 :root {
   font-family: Avenir, Helvetica, Arial, sans-serif;
 
+  --count: today;
+
   --white: #fff;
   --light: #ddd;
   --mid: #888;
+  --hole: #000;
   --dark: #222;
   --can:  #040;
   --dont: #333;
   --next: #020;
 
   --round: 8px;
-  --main: 300px;
+  --main: 298px;
   --size: 52px;
   --edge:  5px;
   --tile: 64px; /* + 2 * var(-edge) = 73 */
@@ -73,20 +76,26 @@ main {
   height: var(--main);
   border: 1px solid var(--white);
   border-radius: var(--round);
-  box-sizing: border-box;
   overflow: hidden;
+}
+
+div.tiles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--main);
+  height: var(--main);
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  grid-auto-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
 
   font-size: var(--size);
   line-height: var(--size);
   text-align: center;
 }
 
-label {
+label:not([for]) {
   display: inline-block;
   position: relative;
   width: var(--tile);
@@ -96,7 +105,7 @@ label {
 }
 label:has(:checked) {
   border-color: transparent;
-  background-color: var(--mid);
+  background-color: var(--hole);
 }
 label span::after {
   position: relative;
@@ -112,20 +121,22 @@ input {
   left: -999vw;
 }
 
-label:nth-child(4n + 1) {
-  grid-column: 1;
-}
+.tiles.label {
+  &:nth-child(4n + 1) {
+    grid-column: 1;
+  }
 
-label:nth-child(4n + 2) {
-  grid-column: 2;
-}
+  &:nth-child(4n + 2) {
+    grid-column: 2;
+  }
 
-label:nth-child(4n + 3) {
-  grid-column: 3;
-}
+  &:nth-child(4n + 3) {
+    grid-column: 3;
+  }
 
-label:nth-child(4n + 4) {
-  grid-column: 4;
+  &:nth-child(4n + 4) {
+    grid-column: 4;
+  }
 }
 
 label:has(+ label + label + label + label :checked),
@@ -180,7 +191,7 @@ label:nth-child(1) span::after{
     - mod(var(--seed1), 4096)
     ) / 4096
   );
-  content: counter(number, today);
+  content: counter(number, var(--count));
 }
 
 label:nth-child(2) span::after{
@@ -188,7 +199,7 @@ label:nth-child(2) span::after{
     ( mod(var(--seed1), 4096)
     - mod(mod(var(--seed1), 4096), 256)
   ) / 256);
-  content: counter(number, today);
+  content: counter(number, var(--count));
 }
 
 label:nth-child(3) span::after{
@@ -196,12 +207,12 @@ label:nth-child(3) span::after{
     ( mod(var(--seed1), 256)
     - mod(mod(var(--seed1), 256), 16)
     ) / 16);
-  content: counter(number, today);
+  content: counter(number, var(--count));
 }
 
 label:nth-child(4) span::after{
   counter-set: number mod(var(--seed1), 16);
-  content: counter(number, today);
+  content: counter(number, var(--count));
 }
 
 label:nth-child(5) span::after{
@@ -210,7 +221,7 @@ label:nth-child(5) span::after{
     - mod(var(--seed2), 4096)
     ) / 4096
   );
-  content: counter(number, today);
+  content: counter(number, var(--count));
 }
 
 label:nth-child(6) span::after{
@@ -218,7 +229,7 @@ label:nth-child(6) span::after{
     ( mod(var(--seed2), 4096)
     - mod(mod(var(--seed2), 4096), 256)
     ) / 256);
-  content: counter(number, today);
+  content: counter(number, var(--count));
 }
 
 label:nth-child(7) span::after{
@@ -226,12 +237,12 @@ label:nth-child(7) span::after{
     ( mod(var(--seed2), 256)
     - mod(mod(var(--seed2), 256), 16)
     ) / 16);
-  content: counter(number, today);
+  content: counter(number, var(--count));
 }
 
 label:nth-child(8) span::after{
   counter-set: number mod(var(--seed2), 16);
-  content: counter(number, today);
+  content: counter(number, var(--count));
 }
 
 label:nth-child(9) span::after{
@@ -240,7 +251,7 @@ label:nth-child(9) span::after{
     - mod(var(--seed3), 4096)
     ) / 4096
   );
-  content: counter(number, today);
+  content: counter(number, var(--count));
 }
 
 label:nth-child(10) span::after{
@@ -248,7 +259,7 @@ label:nth-child(10) span::after{
     ( mod(var(--seed3), 4096)
     - mod(mod(var(--seed3), 4096), 256)
     ) / 256);
-  content: counter(number, today);
+  content: counter(number, var(--count));
 }
 
 label:nth-child(11) span::after{
@@ -256,12 +267,12 @@ label:nth-child(11) span::after{
     ( mod(var(--seed3), 256)
     - mod(mod(var(--seed3), 256), 16)
     ) / 16);
-  content: counter(number, today);
+  content: counter(number, var(--count));
 }
 
 label:nth-child(12) span::after{
   counter-set: number mod(var(--seed3), 16);
-  content: counter(number, today);
+  content: counter(number, var(--count));
 }
 
 label:nth-child(13) span::after{
@@ -270,7 +281,7 @@ label:nth-child(13) span::after{
     - mod(var(--seed4), 4096)
     ) / 4096
   );
-  content: counter(number, today);
+  content: counter(number, var(--count));
 }
 
 label:nth-child(14) span::after{
@@ -278,7 +289,7 @@ label:nth-child(14) span::after{
     ( mod(var(--seed4), 4096)
     - mod(mod(var(--seed4), 4096), 256)
     ) / 256);
-  content: counter(number, today);
+  content: counter(number, var(--count));
 }
 
 label:nth-child(15) span::after{
@@ -286,12 +297,12 @@ label:nth-child(15) span::after{
     ( mod(var(--seed4), 256)
     - mod(mod(var(--seed4), 256), 16)
     ) / 16);
-  content: counter(number, today);
+  content: counter(number, var(--count));
 }
 
 label:nth-child(16) span::after{
   counter-set: number mod(var(--seed4), 16);
-  content: counter(number, today);
+  content: counter(number, var(--count));
 }
 
 /*****************************************/
@@ -301,22 +312,24 @@ label:nth-child(16) span::after{
 /*                                       */
 /*****************************************/
 
-label:nth-child(11):has(:checked) + label + label + label + label,
-label:nth-child(15):has(:checked) + label,
-label:nth-child(12):has(+ label + label + label + label :checked),
-label:nth-child(8):has(+ label + label + label + label :checked),
-label:nth-child(7):has(+ label :checked),
-label:nth-child(3):has(+ label + label + label + label :checked),
-label:nth-child(2):has(+ label :checked),
-label:nth-child(1):has(+ label :checked),
-label:nth-child(1):has(:checked) + label + label + label + label,
-label:nth-child(5):has(:checked) + label,
-label:nth-child(6):has(:checked) + label + label + label + label,
-label:nth-child(10):has(:checked) + label + label + label + label,
-label:nth-child(13):has(+ label :checked),
-label:nth-child(9):has(+ label + label + label + label :checked){
+#switch:not(:checked) ~ .tiles {
+  :nth-child(11):has(:checked) + label + label + label + label,
+  :nth-child(15):has(:checked) + label,
+  :nth-child(12):has(+ label + label + label + label :checked),
+  :nth-child(8):has(+ label + label + label + label :checked),
+  :nth-child(7):has(+ label :checked),
+  :nth-child(3):has(+ label + label + label + label :checked),
+  :nth-child(2):has(+ label :checked),
+  :nth-child(1):has(+ label :checked),
+  :nth-child(1):has(:checked) + label + label + label + label,
+  :nth-child(5):has(:checked) + label,
+  :nth-child(6):has(:checked) + label + label + label + label,
+  :nth-child(10):has(:checked) + label + label + label + label,
+  :nth-child(13):has(+ label :checked),
+  :nth-child(9):has(+ label + label + label + label :checked){
   background-color: var(--next);
   pointer-events: all;;
+}
 }
 /* 
 below
@@ -328,26 +341,26 @@ label:nth-child(15):has(:checked) + label
 left
 label:nth-child(7):has(+ label :checked)
 */
-label:nth-child(9):has(:checked) + label + label + label + label,
-label:nth-child(13):has(:checked) + label,
-label:nth-child(10):has(+ label + label + label + label :checked),
-label:nth-child(6):has(+ label + label + label + label :checked),
-label:nth-child(5):has(+ label :checked),
-label:nth-child(1):has(+ label + label + label + label :checked),
-label:nth-child(1):has(:checked) + label,
-label:nth-child(2):has(:checked) + label,
-label:nth-child(3):has(:checked) + label + label + label + label,
-label:nth-child(7):has(:checked) + label,
-label:nth-child(8):has(:checked) + label + label + label + label,
-label:nth-child(12):has(:checked) + label + label + label + label,
-label:nth-child(15):has(+ label :checked),
-label:nth-child(11):has(+ label + label + label + label :checked)
+#switch:checked ~ .tiles :nth-child(9):has(:checked) + label + label + label + label,
+#switch:checked ~ .tiles :nth-child(13):has(:checked) + label,
+#switch:checked ~ .tiles :nth-child(10):has(+ label + label + label + label :checked),
+#switch:checked ~ .tiles :nth-child(6):has(+ label + label + label + label :checked),
+#switch:checked ~ .tiles :nth-child(5):has(+ label :checked),
+#switch:checked ~ .tiles :nth-child(1):has(+ label + label + label + label :checked),
+#switch:checked ~ .tiles :nth-child(1):has(:checked) + label,
+#switch:checked ~ .tiles :nth-child(2):has(:checked) + label,
+#switch:checked ~ .tiles :nth-child(3):has(:checked) + label + label + label + label,
+#switch:checked ~ .tiles :nth-child(7):has(:checked) + label,
+#switch:checked ~ .tiles :nth-child(8):has(:checked) + label + label + label + label,
+#switch:checked ~ .tiles :nth-child(12):has(:checked) + label + label + label + label,
+#switch:checked ~ .tiles :nth-child(15):has(+ label :checked),
+#switch:checked ~ .tiles :nth-child(11):has(+ label + label + label + label :checked)
 {
-  background-color: var(--can);
+  background-color: var(--next);
   pointer-events: all;;
 }
 
-html:has(label:nth-child(15) :checked) {
+.tiles:has(label:nth-child(15) :checked) {
   --seed3: 
    9 * 4096
 + 10 * 256
@@ -360,7 +373,7 @@ html:has(label:nth-child(15) :checked) {
 + 0;
 }
 
-html:has(label:nth-child(16) :checked) {
+.tiles:has(label:nth-child(16) :checked) {
   --seed3: 
    9 * 4096
 + 10 * 256
@@ -373,7 +386,7 @@ html:has(label:nth-child(16) :checked) {
 +  0;
 }
 
-html:has(label:nth-child(12) :checked) {
+.tiles:has(label:nth-child(12) :checked) {
   --seed3: 
    9 * 4096
 + 10 * 256
@@ -386,7 +399,7 @@ html:has(label:nth-child(12) :checked) {
 + 12;
 }
 
-html:has(label:nth-child(8) :checked) {
+.tiles:has(label:nth-child(8) :checked) {
   --seed2: 
    5 * 4096
 +  6 * 256
@@ -404,7 +417,7 @@ html:has(label:nth-child(8) :checked) {
 + 12;
 }
 
-html:has(label:nth-child(7) :checked) {
+.tiles:has(label:nth-child(7) :checked) {
   --seed2: 
    5 * 4096
 +  6 * 256
@@ -422,7 +435,7 @@ html:has(label:nth-child(7) :checked) {
 + 12;
 }
 
-html:has(label:nth-child(3) :checked) {
+.tiles:has(label:nth-child(3) :checked) {
   --seed1: 
    1 * 4096
 +  2 * 256
@@ -445,7 +458,7 @@ html:has(label:nth-child(3) :checked) {
 + 12;
 }
 
-html:has(label:nth-child(2) :checked) {
+.tiles:has(label:nth-child(2) :checked) {
   --seed1: 
    1 * 4096
 +  0 * 256
@@ -468,7 +481,7 @@ html:has(label:nth-child(2) :checked) {
 + 12;
 }
 
-html:has(label:nth-child(1) :checked) {
+.tiles:has(label:nth-child(1) :checked) {
   --seed1: 
    0 * 4096
 +  1 * 256
@@ -491,7 +504,7 @@ html:has(label:nth-child(1) :checked) {
 + 12;
 }
 
-html:has(label:nth-child(5) :checked) {
+.tiles:has(label:nth-child(5) :checked) {
   --seed1: 
    5 * 4096
 +  1 * 256
@@ -514,7 +527,7 @@ html:has(label:nth-child(5) :checked) {
 + 12;
 }
 
-html:has(label:nth-child(6) :checked) {
+.tiles:has(label:nth-child(6) :checked) {
   --seed1: 
    5 * 4096
 +  1 * 256
@@ -537,7 +550,7 @@ html:has(label:nth-child(6) :checked) {
 + 12;
 }
 
-html:has(label:nth-child(10) :checked) {
+.tiles:has(label:nth-child(10) :checked) {
   --seed1: 
    5 * 4096
 +  1 * 256
@@ -560,7 +573,7 @@ html:has(label:nth-child(10) :checked) {
 + 12;
 }
 
-html:has(label:nth-child(14) :checked) {
+.tiles:has(label:nth-child(14) :checked) {
   --seed1: 
    5 * 4096
 +  1 * 256
@@ -583,7 +596,7 @@ html:has(label:nth-child(14) :checked) {
 + 12;
 }
 
-html:has(label:nth-child(13) :checked) {
+.tiles:has(label:nth-child(13) :checked) {
   --seed1: 
    5 * 4096
 +  1 * 256
@@ -606,7 +619,7 @@ html:has(label:nth-child(13) :checked) {
 + 12;
 }
 
-html:has(label:nth-child(9) :checked) {
+.tiles:has(label:nth-child(9) :checked) {
   --seed1: 
    5 * 4096
 +  1 * 256
@@ -627,4 +640,69 @@ html:has(label:nth-child(9) :checked) {
 + 13 * 256
 + 0 * 16
 + 12;
+}
+
+main label[for=switch] {
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: var(--main);
+  height: var(--main);
+  pointer-events: all;
+  display: none;
+
+  /* background-color: #9009; */
+
+  b {
+    position: absolute;
+    font-size: 24px;
+  }
+
+  .sun {
+    top: 148px;
+    left: 10px;
+  }
+
+  .always {
+    top: 175px;
+    left: 12px;
+    font-size: 16px;
+  }
+
+  .moon {
+    top: 192px;
+    left: 40px;
+  }
+}
+
+.tiles:has(:nth-child(9) :checked) + [for=switch] {
+  display: block;
+}
+
+/* label:nth-child(9) {
+  pointer-events: all;
+} */
+
+html:has(#switch:checked) {
+  --count: yours;
+
+  [for=switch] {
+    display: none;
+  }
+}
+
+div.yours {
+  display: none;
+
+  & .heart {
+    position: absolute;
+    top: 155px;
+    left: 160px;
+    font-size: var(--size);
+  }
+}
+
+#switch:checked ~ .tiles:has(label:nth-child(11) :checked) ~ .yours {
+  display: block;
 }
