@@ -37,7 +37,7 @@
     13 * 4096
   + 14 * 256
   + 15 * 16
-  + 15;
+  + 0;
 }
 
 body {
@@ -119,17 +119,17 @@ label:has(:checked) + label + label + label + label {
   pointer-events: all
 }
 
+/* Arrows to show direction of possible movement */
+
 label::before {
   position: absolute;
   left: 0;
   width: 100%;
   font-size: var(--tiny);
   text-align: center;
-  margin: 0;
-  padding: 0;
+  /* color: #080; */
   /* background-color: #f006; */
 }
-
 
 label:has(+ label + label + label + label :checked)::before {
   content: "v";
@@ -156,34 +156,32 @@ label:has(:checked) + label + label + label + label::before {
 }
 
 
-span {
-  width:100%;
-  height:100%;
-}
+/* Finding the number to display from --seedX */
+/* The number counter is scoped to each span */
 
 label:nth-child(1) span::after{
-  counter-set: one calc(
+  counter-set: number calc(
     ( var(--seed1)
     - mod(var(--seed1), 4096)
     ) / 4096
   );
-  content: counter(one);
+  content: counter(number);
 }
 
 label:nth-child(2) span::after{
-  counter-set: two calc(
+  counter-set: number calc(
     ( mod(var(--seed1), 4096)
     - mod(mod(var(--seed1), 4096), 256)
   ) / 256);
-  content: counter(two);
+  content: counter(number);
 }
 
 label:nth-child(3) span::after{
-  counter-set: three calc(
+  counter-set: number calc(
     ( mod(var(--seed1), 256)
     - mod(mod(var(--seed1), 256), 16)
     ) / 16);
-  content: counter(three);
+  content: counter(number);
 }
 
 label:nth-child(4) span::after{
@@ -279,4 +277,108 @@ label:nth-child(15) span::after{
 label:nth-child(16) span::after{
   counter-set: number mod(var(--seed4), 16);
   content: counter(number);
+}
+
+/*****************************************/
+/*                                       */
+/*       HARD-CODED SEQUENCE WHICH       */
+/*     GIVES THE ILLUSION OF WORKING     */
+/*    Follow the bright green squares    */
+/*  Light yellow brings you safely back  */
+/*                                       */
+/*               — Clues —               */
+/*        Mary Rose launched 1511        */
+/*  Peterhouse (Cambridge) founded 1284  */
+/*                                       */
+/*****************************************/
+
+label:nth-child(15):has( + label :checked),
+label:nth-child(11):has( + label + label + label + label :checked),
+label:nth-child(11):has(:checked) + label,
+label:nth-child(8):has( + label + label + label + label :checked),
+label:nth-child(4):has( + label + label + label + label :checked) {
+  color: #9f9;
+}
+
+label:nth-child(4):has(:checked) + label + label + label + label,
+label:nth-child(8):has(:checked) + label + label + label + label,
+label:nth-child(11):has( + label :checked),label:nth-child(11):has(:checked) + label + label + label + label,
+label:nth-child(15):has(:checked) + label
+ {
+  color: #ffc;
+}
+
+html:has(label:nth-child(15) :checked) {
+  --seed4: 
+  13 * 4096
++ 14 * 256
++ 0 * 16
++ 15;
+}
+
+html:has(label:nth-child(11) :checked) {
+  --seed3: 
+    9 * 4096
+  + 10 * 256
+  + 0 * 16
+  + 12;
+  --seed4: 
+  13 * 4096
+  + 14 * 256
+  + 11 * 16
+  + 15;
+}
+
+html:has(label:nth-child(12) :checked) {
+  --seed3: 
+    9 * 4096
+  + 10 * 256
+  + 12 * 16
+  + 0;
+  --seed4: 
+  13 * 4096
+  + 14 * 256
+  + 11 * 16
+  + 15;
+}
+
+html:has(label:nth-child(8) :checked) {
+  --seed2: 
+    5 * 4096
+  + 6 * 256
+  + 7 * 16
+  + 0;
+  --seed3: 
+    9 * 4096
+  + 10 * 256
+  + 12 * 16
+  + 8;
+  --seed4: 
+  13 * 4096
+  + 14 * 256
+  + 11 * 16
+  + 15;
+}
+
+html:has(label:nth-child(4) :checked) {
+  --seed1: 
+    1 * 4096
+  + 2 * 256
+  + 3 * 16
+  + 0;
+  --seed2: 
+    5 * 4096
+  + 6 * 256
+  + 7 * 16
+  + 4;
+  --seed3: 
+    9 * 4096
+  + 10 * 256
+  + 12 * 16
+  + 8;
+  --seed4: 
+    13 * 4096
+  + 14 * 256
+  + 11 * 16
+  + 15;
 }
