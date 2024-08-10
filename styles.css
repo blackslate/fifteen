@@ -26,7 +26,7 @@
   --dark: #222;
   --can:  #040;
   --dont: #333;
-  --next: #020;
+  --next: #fc6;
 
   --round: 8px;
   --main: 298px;
@@ -327,7 +327,7 @@ label:nth-child(16) span::after{
   :nth-child(10):has(:checked) + label + label + label + label,
   :nth-child(13):has(+ label :checked),
   :nth-child(9):has(+ label + label + label + label :checked){
-  background-color: var(--next);
+  color: var(--next);
   pointer-events: all;;
 }
 }
@@ -356,7 +356,7 @@ label:nth-child(7):has(+ label :checked)
 #switch:checked ~ .tiles :nth-child(15):has(+ label :checked),
 #switch:checked ~ .tiles :nth-child(11):has(+ label + label + label + label :checked)
 {
-  background-color: var(--next);
+  color: var(--next);
   pointer-events: all;;
 }
 
@@ -698,7 +698,7 @@ div.yours {
   & .heart {
     position: absolute;
     top: 155px;
-    left: 155px;
+    left: 157px;
     font-size: var(--size);
 
     animation: heart 1s alternate infinite ease-in-out;
@@ -716,8 +716,8 @@ a {
   font-size: 24px;
   padding: 10px 0;
 
-  background-color: #030;
-  border: 1px outset #060;
+  background-color: #960;
+  border: 1px outset #f90;
   border-radius: 10px;
 
   color: inherit;
